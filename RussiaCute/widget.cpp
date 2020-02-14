@@ -291,6 +291,10 @@ bool Widget::isCuteToBotom(){
     return false;
 }
 void Widget::handleToCuteToBotom(){
+    //再次判定是否到底，防止左右移动后再次出现可以移动的情况
+    if(!isCuteToBotom()){
+        return;
+    }
     //更新地图
     for(int i=0;i<4;i++){
         for(int j=0;j<4;j++){
