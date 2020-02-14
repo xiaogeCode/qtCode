@@ -19,6 +19,15 @@ Widget::Widget(QWidget *parent)
     timeId = startTimer(1000);
     isPause = false;
 
+    delayTimer = new QTimer(this);
+    connect(delayTimer,&QTimer::timeout,
+            [=]()
+    {
+        delayTimer->stop();
+        handleToCuteToBotom();
+
+    });
+
 
 }
 void Widget::initGame(){
@@ -253,7 +262,8 @@ void Widget::moveCute(int direction){
             if(!(canCuteMove(0) ||canCuteMove(1))){
                 handleToCuteToBotom();
             }else{
-                handleToCuteToBotom();
+                delayTimer->start(250);
+                //handleToCuteToBotom();
 
 
 //                QTime dieTime = QTime::currentTime().addMSecs(300);

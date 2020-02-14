@@ -5,7 +5,7 @@
 #define CUTE_LEN 40
 
 #include <QWidget>
-
+#include <QTimer>
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
 QT_END_NAMESPACE
@@ -57,6 +57,7 @@ private:
     bool isQucikMove;
     //游戏暂停标志
     bool isPause;
+    QTimer *delayTimer;
 
 
     //随机生成方块
