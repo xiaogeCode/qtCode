@@ -259,27 +259,14 @@ void Widget::moveCute(int direction){
         this->currentY = this->currentY +b[direction];
 
         if(isCuteToBotom()){
+            isQucikMove = false;
             if(!(canCuteMove(0) ||canCuteMove(1))){
                 handleToCuteToBotom();
             }else{
                 delayTimer->start(250);
                 //handleToCuteToBotom();
 
-
-//                QTime dieTime = QTime::currentTime().addMSecs(300);
-//                QTime dealTime = QTime::currentTime().addMSecs(250);
-
-//                while( QTime::currentTime() < dieTime ){
-//                    QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-//                    if(QTime::currentTime()>dealTime){
-//                        handleToCuteToBotom();
-//                    }
-//                }
-
-
-//                cuteBotomtimer();
             }
-
         }
         update();
     }
@@ -315,8 +302,6 @@ void Widget::handleToCuteToBotom(){
     //消除方块
     dismissCutes();
 
-    isQucikMove = false;
-
     //设置随机方块在位置，在最顶行正中央
     currentX =( GAME_WIDTH-4)/2;
     currentY = 0;
@@ -327,6 +312,7 @@ void Widget::handleToCuteToBotom(){
 
     //继续生产下一个随机方块
     createRandomCute();
+    update();
 }
 void Widget::dismissCutes(){
 //    qDebug("dismissCutes");
